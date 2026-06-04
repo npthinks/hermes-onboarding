@@ -19,7 +19,7 @@
 
         <div class="card" id="step-1">
             <h2>Get started in 60 seconds</h2>
-            <p class="step-label">Step 1 of 3 — Create your account</p>
+            <p class="step-label">Step 1 of 4 — Create your account</p>
 
             <div class="form-group">
                 <label>Your name</label>
@@ -39,17 +39,75 @@
         <div class="card hidden" id="step-2">
             <div class="spinner"></div>
             <h2>Setting up your agent</h2>
-            <p class="step-label">Step 2 of 3 — Provisioning</p>
+            <p class="step-label">Step 2 of 4 — Provisioning</p>
             <p id="provision-message">We are preparing your personal AI assistant. This takes about 30 seconds...</p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
         </div>
 
+        <div class="card hidden" id="step-2b">
+            <h2>Connect your apps</h2>
+            <p class="step-label">Step 3 of 4 — Choose what your agent can access</p>
+            <div class="connection-grid">
+                <div class="connection-choice" data-app="gmail" onclick="toggleApp(this)">
+                    <span class="app-icon">📧</span>
+                    <span class="app-name">Gmail</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="imessage" onclick="toggleApp(this)">
+                    <span class="app-icon">💬</span>
+                    <span class="app-name">iMessage</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="calendar" onclick="toggleApp(this)">
+                    <span class="app-icon">📅</span>
+                    <span class="app-name">Calendar</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="notes" onclick="toggleApp(this)">
+                    <span class="app-icon">📝</span>
+                    <span class="app-name">Notes</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="reminders" onclick="toggleApp(this)">
+                    <span class="app-icon">🔔</span>
+                    <span class="app-name">Reminders</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="whatsapp" onclick="toggleApp(this)">
+                    <span class="app-icon">📲</span>
+                    <span class="app-name">WhatsApp</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="slack" onclick="toggleApp(this)">
+                    <span class="app-icon">💼</span>
+                    <span class="app-name">Slack</span>
+                    <span class="app-check">+</span>
+                </div>
+                <div class="connection-choice" data-app="spotify" onclick="toggleApp(this)">
+                    <span class="app-icon">🎵</span>
+                    <span class="app-name">Spotify</span>
+                    <span class="app-check">+</span>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="connectApps()" style="margin-top: 24px;">
+                Connect selected apps →
+            </button>
+            <p class="hint">You can always add more later</p>
+        </div>
+
+        <div class="card hidden" id="step-2c">
+            <h2>Connecting your apps</h2>
+            <p class="step-label">Almost there...</p>
+            <div class="connection-steps" id="connection-steps-list">
+            </div>
+        </div>
+
         <div class="card hidden" id="step-3">
             <div class="success-icon">✅</div>
             <h2>Your agent is ready!</h2>
-            <p class="step-label">Step 3 of 3 — Connect</p>
+            <p class="step-label">Step 4 of 4 — Connect</p>
             <p>Open Telegram and start chatting with your personal Hermes agent right now.</p>
             <a href="https://t.me/{{ bot_username }}" class="btn-primary" target="_blank" id="telegram-link">
                 Open Telegram and say hi 👋
@@ -57,7 +115,9 @@
             <p class="hint">Your agent remembers everything and gets smarter every day.</p>
         </div>
 
-        <script src="/static/app.js"></script>
+    </div>
+
+    <script src="/static/app.js"></script>
 </body>
 
 </html>
