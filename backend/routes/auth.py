@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 import uuid
-# from services.database import create_user
 from backend.services.database import create_user
 
 router = APIRouter()
@@ -9,7 +8,6 @@ router = APIRouter()
 class SignupRequest(BaseModel):
     name: str
     telegram_username: str
-    phone_number: str
 
 class SignupResponse(BaseModel):
     user_id: str
@@ -24,7 +22,7 @@ async def signup(request: SignupRequest):
         user_id=user_id,
         name=request.name,
         telegram_username=request.telegram_username,
-        phone_number=request.phone_number
+        phone_number=""
     )
     
     return SignupResponse(
