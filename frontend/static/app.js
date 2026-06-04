@@ -112,9 +112,8 @@ function showStep3(data) {
     document.getElementById('step-2').classList.add('hidden')
     document.getElementById('step-3').classList.remove('hidden')
 
-    const botUsername = 'your_bot_username'
-    const link = document.getElementById('telegram-link')
-    if (link) {
-        link.href = `https://t.me/${botUsername}`
+    const phoneDisplay = document.getElementById('phone-display')
+    if (phoneDisplay) {
+        phoneDisplay.textContent = `Check your messages at ${data.phone_number || 'your phone'}`
     }
 }

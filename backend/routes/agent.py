@@ -1,7 +1,7 @@
 from fastapi import APIRouter, BackgroundTasks
 from pydantic import BaseModel
-#from services.database import update_user_status, get_user
 from backend.services.database import update_user_status, get_user
+from backend.services.twilio_service import send_welcome_sms
 import asyncio
 
 router = APIRouter()
@@ -16,7 +16,7 @@ async def provision(
 ):
     update_user_status(request.user_id, "provisioning")
     background_tasks.add_task(
-        simulate_provisioning,
+        provision_and_notify,
         request.user_id
     )
     
@@ -25,8 +25,16 @@ async def provision(
         "message": "Your agent is being set up..."
     }
 
-async def simulate_provisioning(user_id: str):
+async def provision_and_notify(user_id: str):
     await asyncio.sleep(5)
+    
+    user = get_user(user_id)
+    if user and user.get("phone_number"):
+        send_welcome_sms(
+            to_number=user["phone_number"],
+            user_name=user["name"]
+        )
+    
     update_user_status(user_id, "ready")
 
 @router.get("/status/{user_id}")
