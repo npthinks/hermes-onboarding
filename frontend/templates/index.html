@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes – Your Personal AI Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="logo">🪽</div>
+            <h1>Meet Hermes</h1>
+            <p class="subtitle">Your personal AI agent that lives in your messages. Always on. Always learning. Always
+                yours.</p>
+        </div>
+
+        <div class="card" id="step-1">
+            <h2>Get started in 60 seconds</h2>
+            <p class="step-label">Step 1 of 3 — Create your account</p>
+
+            <div class="form-group">
+                <label>Your name</label>
+                <input type="text" id="name" placeholder="e.g. Sarah" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+                <label>Your Telegram username</label>
+                <input type="text" id="telegram_username" placeholder="e.g. @sarahsmith" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+                <label>Your phone number</label>
+                <input type="tel" id="phone_number" placeholder="e.g. +31612345678" autocomplete="off" />
+            </div>
+
+            <button class="btn-primary" onclick="signup()">
+                Create my agent →
+            </button>
+        </div>
+
+        <div class="card hidden" id="step-2">
+            <div class="spinner"></div>
+            <h2>Setting up your agent</h2>
+            <p class="step-label">Step 2 of 3 — Provisioning</p>
+            <p id="provision-message">We are preparing your personal AI assistant. This takes about 30 seconds...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="card hidden" id="step-3">
+            <div class="success-icon">✅</div>
+            <h2>Your agent is ready!</h2>
+            <p class="step-label">Step 3 of 3 — Connect</p>
+            <p>Open Telegram and start chatting with your personal Hermes agent right now.</p>
+            <a href="https://t.me/{{ bot_username }}" class="btn-primary" target="_blank">
+                Open Telegram and say hi 👋
+            </a>
+            <p class="hint">Your agent remembers everything and gets smarter every day.</p>
+        </div>
+
+        <script src="/static/app.js"></script>
+</body>
+
+</html>
