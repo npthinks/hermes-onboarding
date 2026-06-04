@@ -45,6 +45,15 @@ async def success(request: Request, user_id: str):
         context={"user_id": user_id}
     )
 
+@app.get("/debug")
+async def debug():
+    return {
+        "bot_username": BOT_USERNAME,
+        "groq_key_set": bool(os.getenv("GROQ_API_KEY")),
+        "telegram_token_set": bool(os.getenv("TELEGRAM_BOT_TOKEN"))
+    }
+
+
 if __name__ == "__main__":
     uvicorn.run(
         "backend.main:app",
