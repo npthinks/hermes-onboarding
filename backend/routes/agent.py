@@ -26,16 +26,20 @@ async def provision(
     }
 
 async def provision_and_notify(user_id: str):
-    await asyncio.sleep(5)
+    await asyncio.sleep(8)
     
     user = get_user(user_id)
     if user and user.get("phone_number"):
-        send_welcome_sms(
-            to_number=user["phone_number"],
-            user_name=user["name"]
-        )
+        try:
+            send_welcome_sms(
+                to_number=user["phone_number"],
+                user_name=user["name"]
+            )
+        except Exception as e:
+            print(f"SMS failed: {str(e)}")
     
     update_user_status(user_id, "ready")
+    print(f"User {user_id} status updated to ready")
 
 @router.get("/status/{user_id}")
 async def get_status(user_id: str):
