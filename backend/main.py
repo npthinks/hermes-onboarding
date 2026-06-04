@@ -2,7 +2,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from backend.routes import auth, agent, webhook
+#from backend.routes import auth, agent, webhook
+from routes import auth, agent, webhook
 from dotenv import load_dotenv
 import uvicorn
 import os

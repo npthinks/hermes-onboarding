@@ -1,7 +1,6 @@
 from fastapi import APIRouter, BackgroundTasks
 from pydantic import BaseModel
-from backend.services.database import update_user_status, get_user
-from backend.services.twilio_service import send_welcome_sms
+from services.database import update_user_status, get_user
 import asyncio
 
 router = APIRouter()

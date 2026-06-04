@@ -1,8 +1,8 @@
 import docker
 import os
 import subprocess
-#from services.database import update_user_container, update_user_status, update_pairing_code
-from backend.services.database import update_user_container, update_user_status, update_pairing_code
+from services.database import update_user_container, update_user_status, update_pairing_code
+#from backend.services.database import update_user_container, update_user_status, update_pairing_code
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "your_groq_key_here")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "your_telegram_token_here")

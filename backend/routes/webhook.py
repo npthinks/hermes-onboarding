@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
-#from services.database import get_user_by_telegram, update_user_status
-from backend.services.database import get_user_by_telegram, update_user_status
+from services.database import get_user_by_telegram, update_user_status
+#from backend.services.database import get_user_by_telegram, update_user_status
 
 router = APIRouter()
 
