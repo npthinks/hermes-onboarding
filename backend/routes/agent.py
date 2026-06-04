@@ -1,10 +1,8 @@
 from fastapi import APIRouter, BackgroundTasks
 from pydantic import BaseModel
-# from services.docker_service import provision_agent
-# from services.database import update_user_status, get_user
-
-from backend.services.docker_service import provision_agent
+#from services.database import update_user_status, get_user
 from backend.services.database import update_user_status, get_user
+import asyncio
 
 router = APIRouter()
 
@@ -16,17 +14,20 @@ async def provision(
     request: ProvisionRequest,
     background_tasks: BackgroundTasks
 ):
+    update_user_status(request.user_id, "provisioning")
     background_tasks.add_task(
-        provision_agent,
+        simulate_provisioning,
         request.user_id
     )
-    
-    update_user_status(request.user_id, "provisioning")
     
     return {
         "status": "provisioning",
         "message": "Your agent is being set up..."
     }
+
+async def simulate_provisioning(user_id: str):
+    await asyncio.sleep(5)
+    update_user_status(user_id, "ready")
 
 @router.get("/status/{user_id}")
 async def get_status(user_id: str):
